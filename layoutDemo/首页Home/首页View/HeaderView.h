@@ -7,7 +7,35 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BtnListCollCell.h"
 
-@interface HeaderView : UIView
+static NSString * const HeaderViewBtnCellID = @"HeaderViewBtnCellID";
 
+/**
+ *  代理事件
+ */
+@protocol HeaderViewDelegate <NSObject>
+
+-(void)ClickHeaderBtn :(int)CellID;
+
+@end
+
+@interface HeaderView : UIView<UICollectionViewDelegate,UICollectionViewDataSource>
+
+/*
+ * 按钮的数组
+ */
+@property(strong, nonatomic) NSArray *BtnList;
+
+
+@property (strong, nonatomic) UICollectionView *HeaderBtnListView;
+
+/*
+ *  初始化
+ */
+-(instancetype)initWithFrame:(CGRect)frame;
+
+-(instancetype)initWithHeaderView:(CGPoint)origin andHeight:(CGFloat)height;
+
+@property (nonatomic, weak)id<HeaderViewDelegate>ClickHeaderBtnDelegate;
 @end

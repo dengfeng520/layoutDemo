@@ -12,6 +12,7 @@
 #import "FristCollectionViewCell.h"
 #import "UIDragButton.h"
 #import "PayViewController.h"
+#import "HeaderView.h"
 
 #import "Header.h"
 #import "ISInternet.h"
@@ -28,7 +29,7 @@ static NSString * const HomeFristCellID = @"HomeTabCellID";
 static NSString * const HomeCollCellID = @"HomeCollCellID";
 
 
-@interface ViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDataSourcePrefetching,UIDragButtonDelegate>
+@interface ViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,HeaderViewDelegate,UIDragButtonDelegate>
 
 
 /**
@@ -142,13 +143,19 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
     self.view.frame = CGRectZero;
     // 延时显示悬浮窗口
     [self performSelector:@selector(InitChangeBtnView) withObject:nil afterDelay:1];
+    
+    
+    //------------------------
+    HeaderView *HomeHeaderView = [[HeaderView alloc]initWithHeaderView:CGPointMake(0, 64) andHeight:45];
+    HomeHeaderView.BtnList = @[@"默认",@"热门",@"推荐",@"新品",@"价格"];
+    [self.view addSubview:HomeHeaderView];
 
 }
 
 -(void)NewCollView
 {
-    UICollectionViewFlowLayout *flowLayout =[[UICollectionViewFlowLayout alloc]init];
-    self.collectionView  =[[UICollectionView alloc]initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
+    self.collectionView  = [[UICollectionView alloc]initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
     
     //------------------------
     //代理
@@ -164,10 +171,14 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
     
     
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view.mas_left).offset(0);//使左边等于self.view的左边，间距为0
-        make.top.equalTo(self.view.mas_top).offset(0);//使顶部与self.view的间距为0
-        make.width.equalTo(self.view.mas_width).multipliedBy(1);//设置宽度为self.view的一半，multipliedBy是倍数的意思，也就是，使宽度等于self.view宽度的0.5倍
-        make.height.equalTo(self.view.mas_height).multipliedBy(1);//设置高度为self.view高度的一半
+        //使左边等于self.view的左边，间距为0
+        make.left.equalTo(self.view.mas_left).offset(0);
+        //使顶部与self.view的间距为45
+        make.top.equalTo(self.view.mas_top).offset(45);
+        //设置宽度
+        make.width.equalTo(self.view.mas_width).multipliedBy(1);
+        //设置高度
+        make.height.equalTo(self.view.mas_height).multipliedBy(1);
         
     }];
 }
@@ -229,7 +240,7 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
     self.ChangBtn.imageView.alpha = 0.8;
     
     // 悬浮窗
-    _window = [[UIWindow alloc]initWithFrame:CGRectMake(DEF_SCREEN_WIDTH - 50, 105, 40, 40)];
+    _window = [[UIWindow alloc]initWithFrame:CGRectMake(DEF_SCREEN_WIDTH - 55, 105, 40, 40)];
     _window.windowLevel = UIWindowLevelAlert+1;
     _window.backgroundColor = [UIColor clearColor];
     _window.layer.cornerRadius = 5;
@@ -241,6 +252,7 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
 
     
 }
+
 
 
 /*
@@ -257,6 +269,11 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
         [self.ChangBtn setBackgroundImage:[UIImage imageNamed:@"goods_one"] forState:UIControlStateNormal];
     }
     [self.collectionView reloadData];
+}
+
+-(void)ClickHeaderBtn :(int)CellID
+{
+    printf("\n===============%d\n",CellID);
 }
 
 #pragma mark - 公开接口
