@@ -148,6 +148,7 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
     //------------------------
     HeaderView *HomeHeaderView = [[HeaderView alloc]initWithHeaderView:CGPointMake(0, 64) andHeight:45];
     HomeHeaderView.BtnList = @[@"默认",@"热门",@"推荐",@"新品",@"价格"];
+    HomeHeaderView.ClickHeaderBtnDelegate = self;
     [self.view addSubview:HomeHeaderView];
 
 }
@@ -240,7 +241,7 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
     self.ChangBtn.imageView.alpha = 0.8;
     
     // 悬浮窗
-    _window = [[UIWindow alloc]initWithFrame:CGRectMake(DEF_SCREEN_WIDTH - 55, 105, 40, 40)];
+    _window = [[UIWindow alloc]initWithFrame:CGRectMake(DEF_SCREEN_WIDTH - 50, 115, 40, 40)];
     _window.windowLevel = UIWindowLevelAlert+1;
     _window.backgroundColor = [UIColor clearColor];
     _window.layer.cornerRadius = 5;
