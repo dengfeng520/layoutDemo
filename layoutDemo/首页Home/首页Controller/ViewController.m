@@ -229,7 +229,7 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
     self.ChangBtn.imageView.alpha = 0.8;
     
     // 悬浮窗
-    _window = [[UIWindow alloc]initWithFrame:CGRectMake(DEF_SCREEN_WIDTH - 40, 105, 40, 40)];
+    _window = [[UIWindow alloc]initWithFrame:CGRectMake(DEF_SCREEN_WIDTH - 50, 105, 40, 40)];
     _window.windowLevel = UIWindowLevelAlert+1;
     _window.backgroundColor = [UIColor clearColor];
     _window.layer.cornerRadius = 5;

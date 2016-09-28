@@ -89,28 +89,28 @@ typedef enum {
         case LEFT:
         {
             [UIView animateWithDuration:0.3 animations:^{
-                self.superview.center = CGPointMake(self.superview.frame.size.width/2, self.superview.center.y);
+                self.superview.center = CGPointMake(self.superview.frame.size.width / 2 + 10, self.superview.center.y);
             }];
             break;
         }
         case RIGHT:
         {
             [UIView animateWithDuration:0.3 animations:^{
-                self.superview.center = CGPointMake(W - self.superview.frame.size.width/2, self.superview.center.y);
+                self.superview.center = CGPointMake(W - self.superview.frame.size.width / 2 - 10, self.superview.center.y);
             }];
             break;
         }
         case TOP:
         {
             [UIView animateWithDuration:0.3 animations:^{
-                self.superview.center = CGPointMake(self.superview.center.x, self.superview.frame.size.height/2);
+                self.superview.center = CGPointMake(self.superview.center.x, self.superview.frame.size.height / 2 + 74);
             }];
             break;
         }
         case BOTTOM:
         {
             [UIView animateWithDuration:0.3 animations:^{
-                self.superview.center = CGPointMake(self.superview.center.x, H - self.superview.frame.size.height/2);
+                self.superview.center = CGPointMake(self.superview.center.x, H - self.superview.frame.size.height / 2 - 10);
             }];
             break;
         }
