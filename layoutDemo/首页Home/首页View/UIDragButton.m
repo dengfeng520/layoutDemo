@@ -18,7 +18,6 @@ typedef enum {
     BOTTOM
 }Dir;
 
-
 /**
  *  开始触摸，记录触点位置用于判断是拖动还是点击
  */
@@ -62,8 +61,8 @@ typedef enum {
     CGFloat W = DEF_SCREEN_WIDTH;
     CGFloat H = DEF_SCREEN_HEIGHT;
     if (orientation == UIInterfaceOrientationLandscapeRight||orientation ==UIInterfaceOrientationLandscapeLeft) {
-        W = DEF_SCREEN_WIDTH;
-        H = DEF_SCREEN_HEIGHT;
+        W = DEF_SCREEN_HEIGHT;
+        H = DEF_SCREEN_WIDTH;
     }
     // 与四个屏幕边界距离
     CGFloat left = curPoint.x;
@@ -153,5 +152,6 @@ typedef enum {
             break;
     }
 }
+
 
 @end

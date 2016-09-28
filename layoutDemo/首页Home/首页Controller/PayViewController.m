@@ -102,7 +102,7 @@ static NSString * const PayViewCellID = @"PayViewCellID";
                 lb.layer.borderWidth = 2.0;
                 lb.layer.cornerRadius = 5.0;
                 lb.tag = 100 + i;
-              
+                [lb addTarget:self action:@selector(menuListBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
                 lb.layer.borderColor = [UIColorFromRGB(0x51A6FF) CGColor];
                 [lb setTitleColor:UIColorFromRGB(0x51A6FF) forState:UIControlStateNormal];
                 
@@ -159,34 +159,31 @@ static NSString * const PayViewCellID = @"PayViewCellID";
 }
 
 -(void)menuListBtnClicked:(id)sender {
-    
+
     UIButton *button = (UIButton*)sender;
     button.layer.borderColor = [UIColorFromRGB(0x51A6FF) CGColor];
-    [button setTitleColor:UIColorFromRGB(0x51A6FF) forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    button.backgroundColor = UIColorFromRGB(0x51A6FF);
+
     NSString * btnTitle = [button titleForState:UIControlStateNormal];
-    
+    NSLog(@"============%@",btnTitle);
     if ([btnTitle isEqualToString:@"50"]) {
         
-        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         
     } else if ([btnTitle isEqualToString:@"100"]) {
         
-         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+       
     } else if ([btnTitle isEqualToString:@"500"]) {
-         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        
         
     } else if ([btnTitle isEqualToString:@"1000"]) {
-         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        
         
     } else if ([btnTitle isEqualToString:@"2000"]) {
         
-         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         
     } else if ([btnTitle isEqualToString:@"5000"]) {
-        
-       [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        
+  
     }
-
 }
 @end

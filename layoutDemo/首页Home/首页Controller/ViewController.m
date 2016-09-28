@@ -72,7 +72,7 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
     self.ISChange = YES;
     //------------------------
     self.CollPageNum = 1;
-    self.CollNumber = self.view.frame.size.height / (self.view.frame.size.width / 2) + 1;
+    self.CollNumber = self.view.frame.size.height / 90;
     
     //设置整个视图的背景颜色
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
@@ -104,9 +104,17 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
     self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
         [self.collectionView.mj_header endRefreshing];
-        self.CollPageNum = 1;
-        self.CollNumber = self.view.frame.size.height / (self.view.frame.size.width / 2) + 1;
-        [self.collectionView reloadData];
+        if(self.HomeDataList.count == 0)
+        {
+            
+            [self GetServerADData];
+        
+        }else
+        {
+            self.CollPageNum = 1;
+            self.CollNumber = self.view.frame.size.height / 90;
+            [self.collectionView reloadData];
+        }
     }];
     
     //------------------------------
@@ -170,8 +178,16 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewWillAppear:(BOOL)animated{
+-(void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
+    
+    [self.ChangBtn setHidden:NO];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.ChangBtn setHidden:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -195,30 +211,34 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
  */
 -(void)InitChangeBtnView
 {
+   
     // 悬浮按钮
     self.ChangBtn = [UIDragButton buttonWithType:UIButtonTypeCustom];
-    [self.ChangBtn setBackgroundImage:[UIImage imageNamed:@"goods_two"] forState:UIControlStateNormal];
+    [self.ChangBtn setImage:[UIImage imageNamed:@"goods_two"] forState:UIControlStateNormal];
     // 按钮图片伸缩充满整个按钮
     self.ChangBtn.imageView.contentMode = UIViewContentModeScaleToFill;
     self.ChangBtn.frame = CGRectMake(0, 0, 40, 40);
     // 按钮点击事件
     [self.ChangBtn addTarget:self action:@selector(ClickChangBtn:) forControlEvents:UIControlEventTouchUpInside];
-    // 按钮点击事件代理
-    self.ChangBtn.btnDelegate = self;
     // 初始选中状态
     self.ChangBtn.selected = NO;
     // 禁止高亮
     self.ChangBtn.adjustsImageWhenHighlighted = NO;
     self.ChangBtn.rootView = self.view.superview;
+    self.ChangBtn.btnDelegate = self;
+    self.ChangBtn.imageView.alpha = 0.8;
     
     // 悬浮窗
-    _window = [[UIWindow alloc]initWithFrame:CGRectMake(DEF_SCREEN_WIDTH - 60, 105, 40, 40)];
+    _window = [[UIWindow alloc]initWithFrame:CGRectMake(DEF_SCREEN_WIDTH - 40, 105, 40, 40)];
     _window.windowLevel = UIWindowLevelAlert+1;
+    _window.backgroundColor = [UIColor clearColor];
+    _window.layer.cornerRadius = 5;
     _window.layer.masksToBounds = YES;
     // 将按钮添加到悬浮按钮上
     [_window addSubview:self.ChangBtn];
     //显示window
     [_window makeKeyAndVisible];
+
     
 }
 
