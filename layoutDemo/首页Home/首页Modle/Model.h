@@ -10,8 +10,6 @@
 
 @interface Model : NSObject
 
-@property (nonatomic, copy) NSString *id;
-
 @property (nonatomic, copy) NSString *primaryGenreName;
 
 @property (nonatomic, copy) NSString *artworkUrl100;

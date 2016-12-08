@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C19D7E01DAE2471001E927A /* Best64.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C19D7DF1DAE2471001E927A /* Best64.m */; };
 		1C39CB391D98C08D0058750B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C39CB2A1D98C08D0058750B /* ViewController.m */; };
 		1C39CB3A1D98C08D0058750B /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C39CB2D1D98C08D0058750B /* Model.m */; };
 		1C39CB3B1D98C08D0058750B /* FristCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C39CB301D98C08D0058750B /* FristCollectionViewCell.m */; };
@@ -48,6 +49,8 @@
 
 /* Begin PBXFileReference section */
 		0614154EC6ED48859BAE621D /* Pods-layoutDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-layoutDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-layoutDemo/Pods-layoutDemo.release.xcconfig"; sourceTree = "<group>"; };
+		1C19D7DE1DAE2471001E927A /* Best64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Best64.h; sourceTree = "<group>"; };
+		1C19D7DF1DAE2471001E927A /* Best64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Best64.m; sourceTree = "<group>"; };
 		1C39CB291D98C08D0058750B /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		1C39CB2A1D98C08D0058750B /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		1C39CB2C1D98C08D0058750B /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
@@ -164,13 +167,6 @@
 			path = "首页View";
 			sourceTree = "<group>";
 		};
-		1C39CB371D98C08D0058750B /* 我的Myself */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "我的Myself";
-			sourceTree = "<group>";
-		};
 		1C5FAB631D9510D20043E35A = {
 			isa = PBXGroup;
 			children = (
@@ -197,7 +193,6 @@
 			isa = PBXGroup;
 			children = (
 				1C39CB251D98C08D0058750B /* 首页Home */,
-				1C39CB371D98C08D0058750B /* 我的Myself */,
 				1C5FABA51D95167B0043E35A /* Public */,
 				1C5FAB721D9510D30043E35A /* AppDelegate.h */,
 				1C5FAB731D9510D30043E35A /* AppDelegate.m */,
@@ -239,6 +234,8 @@
 		1C5FABA51D95167B0043E35A /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				1C19D7DE1DAE2471001E927A /* Best64.h */,
+				1C19D7DF1DAE2471001E927A /* Best64.m */,
 				1C5FABB91D9522A60043E35A /* MJExtensionConfig.h */,
 				1C5FABBA1D9522A60043E35A /* MJExtensionConfig.m */,
 				1C5FABA61D95167B0043E35A /* Header.h */,
@@ -460,6 +457,7 @@
 				1C5FABAB1D95167B0043E35A /* ISInternet.m in Sources */,
 				1C39CB3B1D98C08D0058750B /* FristCollectionViewCell.m in Sources */,
 				1C39CB3E1D98C08D0058750B /* UIDragButton.m in Sources */,
+				1C19D7E01DAE2471001E927A /* Best64.m in Sources */,
 				1C39CB3A1D98C08D0058750B /* Model.m in Sources */,
 				1C5FAB741D9510D30043E35A /* AppDelegate.m in Sources */,
 				1C39CB421D98F9770058750B /* PayViewController.m in Sources */,

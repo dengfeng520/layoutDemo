@@ -23,6 +23,7 @@
 #import "MJExtension.h"
 #import "Masonry.h"
 #import "MBProgressHUD.h"
+#import "Best64.h"
 
 static NSString * const HomeFristCellID = @"HomeTabCellID";
 
@@ -150,7 +151,50 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
     HomeHeaderView.BtnList = @[@"默认",@"热门",@"推荐",@"新品",@"价格"];
     HomeHeaderView.ClickHeaderBtnDelegate = self;
     [self.view addSubview:HomeHeaderView];
+    
+    
+//    NSString *RetStr = [NSString stringWithFormat:@"username=%@&password=%@",[Best64 setencryptionBybest64String:@"123456"],[Best64 setencryptionBybest64String:@"123456"]];
+//    [self get_Living_room:RetStr secuessBlock:^(NSDictionary *secuess) {
+//        NSLog(@"================%@",secuess);
+//    }];
+    
 
+
+}
+
+-(void)get_Living_room :(NSString *)retData secuessBlock:(void(^)(NSDictionary *secuess))getData
+{
+    NSString *post = [NSString stringWithFormat:@"%@",retData];
+    NSData *postdata = [post dataUsingEncoding:NSUTF8StringEncoding];
+    NSURL *url = [NSURL URLWithString:@"http://101.201.233.205/sdk/login.php"];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
+    NSMutableData *commit = [[NSMutableData alloc]init];
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:commit];
+    [commit appendData:postdata];
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                                completionHandler:
+                                      ^(NSData *data, NSURLResponse *response, NSError *error) {
+                                          //在主线程中更新UI
+                                          dispatch_async(dispatch_get_main_queue(), ^{
+                                              if(data != nil)
+                                              {
+                                                  NSDictionary *res = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                                                  NSLog(@"服务器返回的数据===%@",res);
+                                                  
+                                              }else
+                                              {
+                                                  //如果获取失败
+                                                  NSLog(@"请求失败=======%@",error);
+                                              }
+                                              
+                                          });
+                                          
+                                      }];
+    //使用resume方法启动任务
+    [dataTask resume];
+    
 }
 
 -(void)NewCollView
@@ -217,7 +261,6 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
 }
 
 
-
 /*
  *  初始化切换按钮
  */
@@ -226,7 +269,7 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
    
     // 悬浮按钮
     self.ChangBtn = [UIDragButton buttonWithType:UIButtonTypeCustom];
-    [self.ChangBtn setImage:[UIImage imageNamed:@"goods_two"] forState:UIControlStateNormal];
+    [self.ChangBtn setBackgroundImage:[UIImage imageNamed:@"goods_two"] forState:UIControlStateNormal];
     // 按钮图片伸缩充满整个按钮
     self.ChangBtn.imageView.contentMode = UIViewContentModeScaleToFill;
     self.ChangBtn.frame = CGRectMake(0, 0, 40, 40);
@@ -276,6 +319,10 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
 {
     printf("\n===============%d\n",CellID);
 }
+
+
+
+
 
 #pragma mark - 公开接口
 -(void)GetServerADData
@@ -337,9 +384,8 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
     {
         return self.CollNumber;
     }
-
-    
 }
+
 //定义展示的Section的个数
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
