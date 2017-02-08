@@ -305,13 +305,34 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
 -(void)ClickChangBtn :(UIButton *)Btn
 {
     self.ISChange = !self.ISChange;
+    // 设置翻转方向
+    UIViewAnimationOptions option;
     if(self.ISChange == YES)
     {
         [self.ChangBtn setBackgroundImage:[UIImage imageNamed:@"goods_two"] forState:UIControlStateNormal];
+        
+       option =  UIViewAnimationOptionTransitionFlipFromLeft;
+       
     }else
     {
         [self.ChangBtn setBackgroundImage:[UIImage imageNamed:@"goods_one"] forState:UIControlStateNormal];
+        
+        option =  UIViewAnimationOptionTransitionFlipFromRight;
     }
+    
+    void (^update)(void) = ^ {
+        // reload data
+    };
+    [UIView transitionWithView:self.collectionView
+                      duration:0.5f
+                       options:option
+                    animations:^ {
+                        
+                    }
+                    completion:^ (BOOL finished){
+                        update();
+                    }];
+
     [self.collectionView reloadData];
 }
 
