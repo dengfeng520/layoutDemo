@@ -7,3 +7,5 @@
 http://blog.csdn.net/cordova/article/details/51675431
 
 的思路，感谢博主提供的思路。
+
+>录的视频转成gif有掉帧情况，具体请看代码。
