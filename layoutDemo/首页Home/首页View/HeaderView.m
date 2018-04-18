@@ -99,7 +99,7 @@
     UICollectionViewCell * cell = (UICollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
     
-    [self.ClickHeaderBtnDelegate ClickHeaderBtn:indexPath.row];
+    [self.ClickHeaderBtnDelegate ClickHeaderBtn:(int)indexPath.row];
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{

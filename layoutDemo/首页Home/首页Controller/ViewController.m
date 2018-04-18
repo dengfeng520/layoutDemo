@@ -25,6 +25,9 @@
 #import "MBProgressHUD.h"
 #import "Best64.h"
 
+#import "XHTestViewController.h"
+//#import "YNBaseViewController.h"
+
 static NSString * const HomeFristCellID = @"HomeTabCellID";
 
 static NSString * const HomeCollCellID = @"HomeCollCellID";
@@ -95,14 +98,14 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
     }
     
     
-
+    NSArray *LsList = @[@"1",@"2",@"2",@"3",@"3",@"4",@"5",@"7",@"8",@"8"];
+    NSSet *LsSet = [NSSet setWithArray:LsList];
+    NSLog(@"=====================%@",LsSet);
   
     
     
     //------------------------
     //下拉刷新
-  
-    
     self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
         [self.collectionView.mj_header endRefreshing];
@@ -181,7 +184,7 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
                                               if(data != nil)
                                               {
                                                   NSDictionary *res = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-                                                  NSLog(@"服务器返回的数据===%@",res);
+//                                                  NSLog(@"服务器返回的数据===%@",res);
                                                   
                                               }else
                                               {
@@ -351,24 +354,22 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     NSURL *url = [NSURL URLWithString:APPLE_SERVER];
     //POST请求，设置30S超时
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30];
     [request setHTTPMethod:@"POST"];
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                 completionHandler:
                                       ^(NSData *data, NSURLResponse *response, NSError *error) {
-                                          
-                                          
                                           //在主线程中更新UI
                                           dispatch_async(dispatch_get_main_queue(), ^{
                                               [MBProgressHUD hideHUDForView:self.view animated:YES];
                                               if(data != nil)
                                               {
                                                   NSDictionary *res = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-                                                  NSLog(@"服务器返回的数据===%@",res);
+//                                                  NSLog(@"服务器返回的数据===%@",res);
                                                   NSArray *lsList = [Model mj_objectArrayWithKeyValuesArray: [res objectForKey:@"results"]];
                                                  
-                                                  for(int i = 0;i<20;i++)
+                                                  for(int i = 0;i<50;i++)
                                                   {
                                                       [self.HomeDataList addObjectsFromArray:lsList];
                                                   }
@@ -376,7 +377,7 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
                                                   //获取数据
                                            
                                                   //updata
-                                                  
+//                                                  [self GetTraversalDatafromList:self.HomeDataList];
                                                   [self.collectionView reloadData];
                                               }else
                                               {
@@ -392,6 +393,19 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
     [dataTask resume];
 }
 
+
+
+
+/**
+ *  采用Objective-C 1.0的NSEnumerator方法
+ */
+-(NSSet  *)GetTraversalDatafromList :(NSArray *)DataAry
+{
+    NSSet *WXList = [[NSSet alloc]init];
+    
+    WXList = [NSSet setWithArray:DataAry];
+    return WXList;
+}
 
 
 #pragma mark - UICollectionView代理

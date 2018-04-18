@@ -13,5 +13,53 @@
             stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "layoutDemo/&#x9996;&#x9875;Home/&#x9996;&#x9875;Controller/ViewController.m"
+            timestampString = "511926927.739145"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
+            landmarkName = "-get_Living_room:secuessBlock:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__47-[ViewController get_Living_room:secuessBlock:]_block_invoke_2"
+                  moduleName = "layoutDemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rp.wang/Desktop/%E5%A4%87%E4%BB%BD/Myblock%20demo/layoutDemo/layoutDemo/%E9%A6%96%E9%A1%B5Home/%E9%A6%96%E9%A1%B5Controller/ViewController.m"
+                  timestampString = "545725140.774552"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "189"
+                  endingLineNumber = "189"
+                  offsetFromSymbolStart = "106">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__47-[ViewController get_Living_room:secuessBlock:]_block_invoke_2"
+                  moduleName = "layoutDemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rp.wang/Desktop/%E5%A4%87%E4%BB%BD/Myblock%20demo/layoutDemo/layoutDemo/%E9%A6%96%E9%A1%B5Home/%E9%A6%96%E9%A1%B5Controller/ViewController.m"
+                  timestampString = "545725140.779729"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "189"
+                  endingLineNumber = "189"
+                  offsetFromSymbolStart = "114">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

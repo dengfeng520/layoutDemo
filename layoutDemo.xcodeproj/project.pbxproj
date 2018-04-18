@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C1451391E835C6B003C5E30 /* CheckNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1451341E835C6B003C5E30 /* CheckNetwork.m */; };
+		1C14513A1E835C6B003C5E30 /* HttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1451361E835C6B003C5E30 /* HttpManager.m */; };
+		1C14513B1E835C6B003C5E30 /* NetworkError.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1451381E835C6B003C5E30 /* NetworkError.m */; };
 		1C19D7E01DAE2471001E927A /* Best64.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C19D7DF1DAE2471001E927A /* Best64.m */; };
 		1C39CB391D98C08D0058750B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C39CB2A1D98C08D0058750B /* ViewController.m */; };
 		1C39CB3A1D98C08D0058750B /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C39CB2D1D98C08D0058750B /* Model.m */; };
@@ -27,6 +30,10 @@
 		1C5FABBB1D9522A60043E35A /* MJExtensionConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5FABBA1D9522A60043E35A /* MJExtensionConfig.m */; };
 		1C91E3F31D9B9BD7000DD60C /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C91E3F21D9B9BD7000DD60C /* HeaderView.m */; };
 		1C91E3F61D9BA564000DD60C /* BtnListCollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C91E3F51D9BA564000DD60C /* BtnListCollCell.m */; };
+		1CF6D01A1E717151004D70D4 /* XHTestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF6D0151E717151004D70D4 /* XHTestCell.m */; };
+		1CF6D01B1E717151004D70D4 /* XHTestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CF6D0161E717151004D70D4 /* XHTestCell.xib */; };
+		1CF6D01C1E717151004D70D4 /* XHTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF6D0181E717151004D70D4 /* XHTestViewController.m */; };
+		1CF6D01D1E717151004D70D4 /* XHTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CF6D0191E717151004D70D4 /* XHTestViewController.xib */; };
 		68B1AD8322E1C8FC639A0F37 /* libPods-layoutDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E275212EFFEC15A542C646 /* libPods-layoutDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +56,12 @@
 
 /* Begin PBXFileReference section */
 		0614154EC6ED48859BAE621D /* Pods-layoutDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-layoutDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-layoutDemo/Pods-layoutDemo.release.xcconfig"; sourceTree = "<group>"; };
+		1C1451331E835C6B003C5E30 /* CheckNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckNetwork.h; sourceTree = "<group>"; };
+		1C1451341E835C6B003C5E30 /* CheckNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckNetwork.m; sourceTree = "<group>"; };
+		1C1451351E835C6B003C5E30 /* HttpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpManager.h; sourceTree = "<group>"; };
+		1C1451361E835C6B003C5E30 /* HttpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpManager.m; sourceTree = "<group>"; };
+		1C1451371E835C6B003C5E30 /* NetworkError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkError.h; sourceTree = "<group>"; };
+		1C1451381E835C6B003C5E30 /* NetworkError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkError.m; sourceTree = "<group>"; };
 		1C19D7DE1DAE2471001E927A /* Best64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Best64.h; sourceTree = "<group>"; };
 		1C19D7DF1DAE2471001E927A /* Best64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Best64.m; sourceTree = "<group>"; };
 		1C39CB291D98C08D0058750B /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -89,6 +102,12 @@
 		1C91E3F21D9B9BD7000DD60C /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
 		1C91E3F41D9BA564000DD60C /* BtnListCollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BtnListCollCell.h; sourceTree = "<group>"; };
 		1C91E3F51D9BA564000DD60C /* BtnListCollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BtnListCollCell.m; sourceTree = "<group>"; };
+		1CF6D0141E717151004D70D4 /* XHTestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHTestCell.h; sourceTree = "<group>"; };
+		1CF6D0151E717151004D70D4 /* XHTestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHTestCell.m; sourceTree = "<group>"; };
+		1CF6D0161E717151004D70D4 /* XHTestCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHTestCell.xib; sourceTree = "<group>"; };
+		1CF6D0171E717151004D70D4 /* XHTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHTestViewController.h; sourceTree = "<group>"; };
+		1CF6D0181E717151004D70D4 /* XHTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHTestViewController.m; sourceTree = "<group>"; };
+		1CF6D0191E717151004D70D4 /* XHTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHTestViewController.xib; sourceTree = "<group>"; };
 		220A3033BBF4E0C8FBACA0E9 /* Pods-layoutDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-layoutDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-layoutDemo/Pods-layoutDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		50E275212EFFEC15A542C646 /* libPods-layoutDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-layoutDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -119,6 +138,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C1451321E835C6B003C5E30 /* NetworkError */ = {
+			isa = PBXGroup;
+			children = (
+				1C1451331E835C6B003C5E30 /* CheckNetwork.h */,
+				1C1451341E835C6B003C5E30 /* CheckNetwork.m */,
+				1C1451351E835C6B003C5E30 /* HttpManager.h */,
+				1C1451361E835C6B003C5E30 /* HttpManager.m */,
+				1C1451371E835C6B003C5E30 /* NetworkError.h */,
+				1C1451381E835C6B003C5E30 /* NetworkError.m */,
+			);
+			path = NetworkError;
+			sourceTree = "<group>";
+		};
 		1C39CB251D98C08D0058750B /* 首页Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +164,12 @@
 		1C39CB261D98C08D0058750B /* 首页Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1CF6D0141E717151004D70D4 /* XHTestCell.h */,
+				1CF6D0151E717151004D70D4 /* XHTestCell.m */,
+				1CF6D0161E717151004D70D4 /* XHTestCell.xib */,
+				1CF6D0171E717151004D70D4 /* XHTestViewController.h */,
+				1CF6D0181E717151004D70D4 /* XHTestViewController.m */,
+				1CF6D0191E717151004D70D4 /* XHTestViewController.xib */,
 				1C39CB291D98C08D0058750B /* ViewController.h */,
 				1C39CB2A1D98C08D0058750B /* ViewController.m */,
 				1C39CB3F1D98F9770058750B /* PayViewController.h */,
@@ -234,6 +272,7 @@
 		1C5FABA51D95167B0043E35A /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				1C1451321E835C6B003C5E30 /* NetworkError */,
 				1C19D7DE1DAE2471001E927A /* Best64.h */,
 				1C19D7DF1DAE2471001E927A /* Best64.m */,
 				1C5FABB91D9522A60043E35A /* MJExtensionConfig.h */,
@@ -376,6 +415,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CF6D01D1E717151004D70D4 /* XHTestViewController.xib in Resources */,
+				1CF6D01B1E717151004D70D4 /* XHTestCell.xib in Resources */,
 				1C5FAB7F1D9510D30043E35A /* LaunchScreen.storyboard in Resources */,
 				1C5FAB7C1D9510D30043E35A /* Assets.xcassets in Resources */,
 				1C5FAB7A1D9510D30043E35A /* Main.storyboard in Resources */,
@@ -452,12 +493,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CF6D01C1E717151004D70D4 /* XHTestViewController.m in Sources */,
 				1C91E3F31D9B9BD7000DD60C /* HeaderView.m in Sources */,
+				1C1451391E835C6B003C5E30 /* CheckNetwork.m in Sources */,
 				1C39CB391D98C08D0058750B /* ViewController.m in Sources */,
 				1C5FABAB1D95167B0043E35A /* ISInternet.m in Sources */,
+				1C14513B1E835C6B003C5E30 /* NetworkError.m in Sources */,
 				1C39CB3B1D98C08D0058750B /* FristCollectionViewCell.m in Sources */,
 				1C39CB3E1D98C08D0058750B /* UIDragButton.m in Sources */,
+				1CF6D01A1E717151004D70D4 /* XHTestCell.m in Sources */,
 				1C19D7E01DAE2471001E927A /* Best64.m in Sources */,
+				1C14513A1E835C6B003C5E30 /* HttpManager.m in Sources */,
 				1C39CB3A1D98C08D0058750B /* Model.m in Sources */,
 				1C5FAB741D9510D30043E35A /* AppDelegate.m in Sources */,
 				1C39CB421D98F9770058750B /* PayViewController.m in Sources */,
