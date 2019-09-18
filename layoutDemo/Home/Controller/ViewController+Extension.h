@@ -26,13 +26,10 @@
 
 #import "XHTestViewController.h"
 
-static NSString * const HomeFristCellID = @"HomeTabCellID";
-
-static NSString * const HomeCollCellID = @"HomeCollCellID";
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,HeaderViewDelegate,UIDragButtonDelegate>
+@interface ViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,HeaderViewDelegate,UIDragButtonDelegate,UICollectionViewDataSourcePrefetching>
 
 /**
  *  悬浮的window

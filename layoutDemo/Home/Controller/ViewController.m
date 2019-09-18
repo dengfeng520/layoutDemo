@@ -9,6 +9,9 @@
 #import "ViewController.h"
 #import "ViewController+Extension.h"
 
+static NSString * const HomeFristCellID = @"HomeTabCellID";
+static NSString * const HomeCollCellID = @"HomeCollCellID";
+
 @implementation ViewController
 
 - (void)viewDidLoad {
@@ -83,7 +86,7 @@
     
     
     //------------------------
-    HeaderView *HomeHeaderView = [[HeaderView alloc]initWithHeaderView:CGPointMake(0, 64) andHeight:45];
+    HeaderView *HomeHeaderView = [[HeaderView alloc] initWithHeaderView:CGPointMake(0, 64) andHeight:45];
     HomeHeaderView.BtnList = @[@"默认",@"热门",@"推荐",@"新品",@"价格"];
     HomeHeaderView.clickHeaderBtnDelegate = self;
     [self.view addSubview:HomeHeaderView];
@@ -254,10 +257,6 @@
     printf("\n===============%d\n",cellID);
 }
 
-
-
-
-
 #pragma mark - 公开接口
 - (void)GetServerADData {
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -272,14 +271,12 @@
                                           //在主线程中更新UI
                                           dispatch_async(dispatch_get_main_queue(), ^{
                                               [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                              if(data != nil)
-                                              {
+                                              if (data != nil) {
                                                   NSDictionary *res = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 //                                                  NSLog(@"服务器返回的数据===%@",res);
                                                   NSArray *lsList = [Model mj_objectArrayWithKeyValuesArray: [res objectForKey:@"results"]];
                                                  
-                                                  for(int i = 0;i<50;i++)
-                                                  {
+                                                  for (int i = 0;i<50;i++) {
                                                       [self.HomeDataList addObjectsFromArray:lsList];
                                                   }
                                                   
@@ -288,8 +285,7 @@
                                                   //updata
 //                                                  [self GetTraversalDatafromList:self.HomeDataList];
                                                   [self.collectionView reloadData];
-                                              }else
-                                              {
+                                              } else {
                                                   //如果获取失败
                                                   NSLog(@"请求失败=======%@",error);
                                               }
@@ -303,45 +299,34 @@
 }
 
 
-
-
 /**
  *  采用Objective-C 1.0的NSEnumerator方法
  */
--(NSSet  *)GetTraversalDatafromList :(NSArray *)DataAry
-{
+- (NSSet *)GetTraversalDatafromList:(NSArray *)DataAry {
     NSSet *WXList = [[NSSet alloc]init];
-    
     WXList = [NSSet setWithArray:DataAry];
     return WXList;
 }
 
-
 #pragma mark - UICollectionView代理
 //定义展示的UICollectionViewCell的个数
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    if(self.CollNumber >= self.HomeDataList.count)
-    {
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    if (self.CollNumber >= self.HomeDataList.count) {
         return self.HomeDataList.count;
-    }else
-    {
+    } else {
         return self.CollNumber;
     }
 }
 
 //定义展示的Section的个数
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
 }
 
 //每个UICollectionView展示的内容
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 
-    if(self.ISChange == YES)
-    {
+    if (self.ISChange == YES) {
         [self.collectionView registerClass:[FristCollectionViewCell class] forCellWithReuseIdentifier:HomeFristCellID];
         FristCollectionViewCell *cell = (FristCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:HomeFristCellID forIndexPath:indexPath];
         if (!cell) {
@@ -355,8 +340,7 @@
         
         return cell;
         
-    }else
-    {
+    } else {
       
 
         [self.collectionView registerClass:[HomeCollectionViewCell class] forCellWithReuseIdentifier:HomeCollCellID];
@@ -364,9 +348,6 @@
         if (!collcell) {
             
             collcell = [[HomeCollectionViewCell alloc] init];
-            
-            
-            
         }
         collcell.backgroundColor = [UIColor whiteColor];
         [collcell CollreloadDataWith:[self.HomeDataList objectAtIndex:indexPath.row]];
@@ -374,26 +355,18 @@
         return collcell;
 
     }
-    
-    
-
-
-    
     return nil;
 }
 //定义每个UICollectionView 的大小
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat screenWith = self.view.frame.size.width;
     CGFloat cellWidth,cellHeight;
-    if(self.ISChange == YES)
-    {
+    if (self.ISChange == YES) {
         cellWidth = screenWith;
         
         cellHeight = 90.f;
         
-    }else
-    {
+    } else {
         //每行2个Cell
         cellWidth = (screenWith - 2 ) / 2 - 2.5;
         
@@ -404,13 +377,11 @@
     return CGSizeMake(cellWidth, cellHeight);
 }
 //定义每个UICollectionView 的 margin
--(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-{
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     return UIEdgeInsetsMake(2.5, 0, 0, 0);
 }
 //UICollectionView被选中时调用的方法
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     UICollectionViewCell * cell = (UICollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
@@ -423,26 +394,22 @@
     
 }
 
--(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     CGSize size = {5.f,5.f};
     return size;
 }
 
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
-{
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     return 5.f;
 }
 
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
-{
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     return 5.f;
 }
 
 #pragma mark - 内存相关
--(NSMutableArray *)HomeDataList
-{
-    if(_HomeDataList == nil)
-    {
+- (NSMutableArray *)HomeDataList {
+    if (_HomeDataList == nil) {
         _HomeDataList = [NSMutableArray array];
     }
     return _HomeDataList;

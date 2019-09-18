@@ -42,8 +42,6 @@ static NSString * const PayViewCellID = @"PayViewCellID";
     self.AnminView.backgroundColor = [UIColor redColor];
     
     
- 
-    
     
     //-----------------------------
     UIButton *AnminBtn = [[UIButton alloc]init];
@@ -132,22 +130,18 @@ static NSString * const PayViewCellID = @"PayViewCellID";
     [AnminBtnFour addTarget:self action:@selector(ClickAnminBtn:) forControlEvents:UIControlEventTouchUpInside];
 }
 
--(void)ClickAnminBtn :(UIButton *)Btntag
-{
-
+- (void)ClickAnminBtn :(UIButton *)Btntag {
+    __weak typeof (self) weakSelf = self;
     switch (Btntag.tag) {
-        case 100:
-        {
+        case 100: {
             printf("\n==================阻尼动画效果\n");
             UIViewPropertyAnimator *AnminTwo = [[UIViewPropertyAnimator alloc]initWithDuration:0.8 dampingRatio:0.3 animations:^(){
-                self.ISAnmin = !self.ISAnmin;
-                if(self.ISAnmin == YES)
-                {
-                    self.AnminView.center = CGPointMake((DEF_SCREEN_WIDTH / 2), DEF_SCREEN_HEIGHT - (self.AnminView.frame.size.height / 2));
+                weakSelf.ISAnmin = !weakSelf.ISAnmin;
+                if (weakSelf.ISAnmin == YES) {
+                    weakSelf.AnminView.center = CGPointMake((DEF_SCREEN_WIDTH / 2), DEF_SCREEN_HEIGHT - (self.AnminView.frame.size.height / 2));
                     
-                }else
-                {
-                    self.AnminView.center = CGPointMake((DEF_SCREEN_WIDTH / 2), 114.f);
+                } else {
+                    weakSelf.AnminView.center = CGPointMake((DEF_SCREEN_WIDTH / 2), 114.f);
                 }
                 
                 
@@ -155,18 +149,15 @@ static NSString * const PayViewCellID = @"PayViewCellID";
             [AnminTwo startAnimation];
         }
             break;
-        case 101:
-        {
+        case 101: {
             printf("\n==================平移动画效果\n");
             UIViewPropertyAnimator *AnminTwo = [[UIViewPropertyAnimator alloc]initWithDuration:0.5 curve:UIViewAnimationCurveLinear animations:^{
-            self.ISAnmin = !self.ISAnmin;
-            if(self.ISAnmin == YES)
-            {
-                self.AnminView.center = CGPointMake((DEF_SCREEN_WIDTH / 2), DEF_SCREEN_HEIGHT - (self.AnminView.frame.size.height / 2));
+            weakSelf.ISAnmin = !weakSelf.ISAnmin;
+            if (weakSelf.ISAnmin == YES) {
+                weakSelf.AnminView.center = CGPointMake((DEF_SCREEN_WIDTH / 2), DEF_SCREEN_HEIGHT - (self.AnminView.frame.size.height / 2));
                 
-            }else
-            {
-                self.AnminView.center = CGPointMake((DEF_SCREEN_WIDTH / 2), 114.f);
+            } else {
+                weakSelf.AnminView.center = CGPointMake((DEF_SCREEN_WIDTH / 2), 114.f);
             }
 
         }];
@@ -175,8 +166,7 @@ static NSString * const PayViewCellID = @"PayViewCellID";
 
         }
             break;
-        case 102:
-        {
+        case 102: {
             printf("\n==================翻页动画效果\n");
             [UIView beginAnimations:@"animation" context:nil];
             [UIView setAnimationDuration:1.0f];
@@ -185,11 +175,9 @@ static NSString * const PayViewCellID = @"PayViewCellID";
             [UIView commitAnimations];
         }
             break;
-        case 103:
-        {
+        case 103: {
             CATransition *transition = [CATransition animation];
             transition.duration = 1.0f;
-            
 //            transition.type = kCATransitionMoveIn;
             transition.type = @"suckEffect";
             /*
