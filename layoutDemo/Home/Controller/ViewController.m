@@ -195,6 +195,10 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
     // 按钮图片伸缩充满整个按钮
     self.ChangBtn.imageView.contentMode = UIViewContentModeScaleToFill;
     self.ChangBtn.frame = CGRectMake(0, 0, 40, 40);
+    self.ChangBtn.clickDragBlock = ^(UIButton *dragBtn) {
+        NSLog(@"================");
+        
+    };
     // 按钮点击事件
     [self.ChangBtn addTarget:self action:@selector(clickChangBtn:) forControlEvents:UIControlEventTouchUpInside];
     // 初始选中状态
@@ -223,6 +227,7 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
  *  点击切换九宫格或列表
  */
 - (void)clickChangBtn:(UIButton *)Btn {
+   
     self.ISChange = !self.ISChange;
     // 设置翻转方向
     UIViewAnimationOptions option;

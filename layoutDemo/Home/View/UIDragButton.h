@@ -10,29 +10,20 @@
 
 #import "Header.h"
 
-/**
- *  代理按钮的点击事件
- */
+// 代理按钮的点击事件
 @protocol UIDragButtonDelegate <NSObject>
 
--(void)clickChangBtn:(UIButton *)Btn;
+- (void)clickChangBtn:(UIButton *)Btn;
 
 @end
 
 @interface UIDragButton : UIButton
 
-/**
- *  悬浮窗所依赖的根视图
- */
-@property (nonatomic, strong)UIView *rootView;
-
-/**
- *  UIDragButton的点击事件代理
- */
-@property (nonatomic, weak)id<UIDragButtonDelegate>btnDelegate;
-
-/**
- *  开始按下的触点坐标
- */
-@property (nonatomic, assign)CGPoint startPos;
+// 悬浮窗所依赖的根视图
+@property (nonatomic, strong) UIWindow *rootView;
+// 开始按下的触点坐标
+@property (nonatomic, assign) CGPoint startPos;
+// UIDragButton的点击事件代理
+@property (nonatomic, weak) id <UIDragButtonDelegate> btnDelegate;
+@property (copy, nonatomic) void(^clickDragBlock)(UIButton *dragBtn);
 @end

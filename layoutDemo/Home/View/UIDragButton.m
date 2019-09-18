@@ -18,36 +18,30 @@ typedef enum {
     BOTTOM
 }Dir;
 
-/**
- *  开始触摸，记录触点位置用于判断是拖动还是点击
- */
+// 开始触摸，记录触点位置用于判断是拖动还是点击
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event {
     // 获得触摸在根视图中的坐标
     UITouch *touch = [touches anyObject];
     _startPos = [touch locationInView:_rootView];
-    _startPos = [self ConvertDir:_startPos];
+    _startPos = [self convertDir:_startPos];
 }
 
-/**
- *  手指按住移动过程,通过悬浮按钮的拖动事件来拖动整个悬浮窗口
- */
+// 手指按住移动过程,通过悬浮按钮的拖动事件来拖动整个悬浮窗口
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     // 获得触摸在根视图中的坐标
     UITouch *touch = [touches anyObject];
     CGPoint curPoint = [touch locationInView:_rootView];
-    curPoint = [self ConvertDir:curPoint];
+    curPoint = [self convertDir:curPoint];
     // 移动按钮到当前触摸位置
     self.superview.center = curPoint;
 }
 
-/**
- *  拖动结束后使悬浮窗口吸附在最近的屏幕边缘
- */
+// 拖动结束后使悬浮窗口吸附在最近的屏幕边缘
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     // 获得触摸在根视图中的坐标
     UITouch *touch = [touches anyObject];
     CGPoint curPoint = [touch locationInView:_rootView];
-    curPoint = [self ConvertDir:curPoint];
+    curPoint = [self convertDir:curPoint];
     // 通知代理,如果结束触点和起始触点极近则认为是点击事件
     if (pow((_startPos.x - curPoint.x),2) + pow((_startPos.y - curPoint.y),2) < 1) {
         [self.btnDelegate clickChangBtn:self];
@@ -115,32 +109,30 @@ typedef enum {
 }
 
 // 屏幕颠倒时坐标转换
-- (CGPoint)UpsideDown:(CGPoint)p {
+- (CGPoint)upsideDown:(CGPoint)p {
     return CGPointMake(DEF_SCREEN_WIDTH - p.x, DEF_SCREEN_HEIGHT - p.y);
 }
 // 屏幕左转时坐标转换
-- (CGPoint)LandscapeLeft:(CGPoint)p {
+- (CGPoint)landscapeLeft:(CGPoint)p {
     return CGPointMake(p.y, DEF_SCREEN_WIDTH - p.x);
 }
 // 屏幕右转时坐标转换
-- (CGPoint)LandscapeRight:(CGPoint)p {
+- (CGPoint)landscapeRight:(CGPoint)p {
     return CGPointMake(DEF_SCREEN_HEIGHT - p.y, p.x);
 }
-/**
- *  坐标转换，转换到屏幕旋转之前的坐标系中
- */
-- (CGPoint)ConvertDir:(CGPoint)p {
+// 坐标转换，转换到屏幕旋转之前的坐标系中
+- (CGPoint)convertDir:(CGPoint)p {
     // 获取屏幕方向
     UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
     switch (orientation) {
         case UIInterfaceOrientationLandscapeLeft:
-            return [self LandscapeLeft:p];
+            return [self landscapeLeft:p];
             break;
         case UIInterfaceOrientationLandscapeRight:
-            return [self LandscapeRight:p];
+            return [self landscapeRight:p];
             break;
         case UIInterfaceOrientationPortraitUpsideDown:
-            return [self UpsideDown:p];
+            return [self upsideDown:p];
             break;
         default:
             return p;
