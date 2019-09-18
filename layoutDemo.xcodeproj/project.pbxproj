@@ -23,8 +23,6 @@
 		1C5FAB7A1D9510D30043E35A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C5FAB781D9510D30043E35A /* Main.storyboard */; };
 		1C5FAB7C1D9510D30043E35A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C5FAB7B1D9510D30043E35A /* Assets.xcassets */; };
 		1C5FAB7F1D9510D30043E35A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C5FAB7D1D9510D30043E35A /* LaunchScreen.storyboard */; };
-		1C5FAB8A1D9510D30043E35A /* layoutDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5FAB891D9510D30043E35A /* layoutDemoTests.m */; };
-		1C5FAB951D9510D30043E35A /* layoutDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5FAB941D9510D30043E35A /* layoutDemoUITests.m */; };
 		1C5FABAB1D95167B0043E35A /* ISInternet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5FABA81D95167B0043E35A /* ISInternet.m */; };
 		1C5FABAC1D95167B0043E35A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5FABAA1D95167B0043E35A /* Reachability.m */; };
 		1C5FABBB1D9522A60043E35A /* MJExtensionConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5FABBA1D9522A60043E35A /* MJExtensionConfig.m */; };
@@ -36,23 +34,6 @@
 		1CF6D01D1E717151004D70D4 /* XHTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CF6D0191E717151004D70D4 /* XHTestViewController.xib */; };
 		68B1AD8322E1C8FC639A0F37 /* libPods-layoutDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E275212EFFEC15A542C646 /* libPods-layoutDemo.a */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		1C5FAB861D9510D30043E35A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1C5FAB641D9510D20043E35A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1C5FAB6B1D9510D20043E35A;
-			remoteInfo = layoutDemo;
-		};
-		1C5FAB911D9510D30043E35A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1C5FAB641D9510D20043E35A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1C5FAB6B1D9510D20043E35A;
-			remoteInfo = layoutDemo;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0614154EC6ED48859BAE621D /* Pods-layoutDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-layoutDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-layoutDemo/Pods-layoutDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -85,10 +66,8 @@
 		1C5FAB7B1D9510D30043E35A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C5FAB7E1D9510D30043E35A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C5FAB801D9510D30043E35A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1C5FAB851D9510D30043E35A /* layoutDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = layoutDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C5FAB891D9510D30043E35A /* layoutDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = layoutDemoTests.m; sourceTree = "<group>"; };
 		1C5FAB8B1D9510D30043E35A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1C5FAB901D9510D30043E35A /* layoutDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = layoutDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C5FAB941D9510D30043E35A /* layoutDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = layoutDemoUITests.m; sourceTree = "<group>"; };
 		1C5FAB961D9510D30043E35A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C5FABA61D95167B0043E35A /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
@@ -119,20 +98,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				68B1AD8322E1C8FC639A0F37 /* libPods-layoutDemo.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1C5FAB821D9510D30043E35A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1C5FAB8D1D9510D30043E35A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,8 +180,6 @@
 			isa = PBXGroup;
 			children = (
 				1C5FAB6C1D9510D30043E35A /* layoutDemo.app */,
-				1C5FAB851D9510D30043E35A /* layoutDemoTests.xctest */,
-				1C5FAB901D9510D30043E35A /* layoutDemoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -336,42 +299,6 @@
 			productReference = 1C5FAB6C1D9510D30043E35A /* layoutDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		1C5FAB841D9510D30043E35A /* layoutDemoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1C5FAB9C1D9510D30043E35A /* Build configuration list for PBXNativeTarget "layoutDemoTests" */;
-			buildPhases = (
-				1C5FAB811D9510D30043E35A /* Sources */,
-				1C5FAB821D9510D30043E35A /* Frameworks */,
-				1C5FAB831D9510D30043E35A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				1C5FAB871D9510D30043E35A /* PBXTargetDependency */,
-			);
-			name = layoutDemoTests;
-			productName = layoutDemoTests;
-			productReference = 1C5FAB851D9510D30043E35A /* layoutDemoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		1C5FAB8F1D9510D30043E35A /* layoutDemoUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1C5FAB9F1D9510D30043E35A /* Build configuration list for PBXNativeTarget "layoutDemoUITests" */;
-			buildPhases = (
-				1C5FAB8C1D9510D30043E35A /* Sources */,
-				1C5FAB8D1D9510D30043E35A /* Frameworks */,
-				1C5FAB8E1D9510D30043E35A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				1C5FAB921D9510D30043E35A /* PBXTargetDependency */,
-			);
-			name = layoutDemoUITests;
-			productName = layoutDemoUITests;
-			productReference = 1C5FAB901D9510D30043E35A /* layoutDemoUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -385,18 +312,6 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = PNQSRNMX9W;
 						ProvisioningStyle = Automatic;
-					};
-					1C5FAB841D9510D30043E35A = {
-						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = PNQSRNMX9W;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 1C5FAB6B1D9510D20043E35A;
-					};
-					1C5FAB8F1D9510D30043E35A = {
-						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = PNQSRNMX9W;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 1C5FAB6B1D9510D20043E35A;
 					};
 				};
 			};
@@ -415,8 +330,6 @@
 			projectRoot = "";
 			targets = (
 				1C5FAB6B1D9510D20043E35A /* layoutDemo */,
-				1C5FAB841D9510D30043E35A /* layoutDemoTests */,
-				1C5FAB8F1D9510D30043E35A /* layoutDemoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -432,20 +345,6 @@
 				1C5FAB7C1D9510D30043E35A /* Assets.xcassets in Resources */,
 				1C5FAB7A1D9510D30043E35A /* Main.storyboard in Resources */,
 				1C39CB431D98F9770058750B /* PayViewController.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1C5FAB831D9510D30043E35A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1C5FAB8E1D9510D30043E35A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,36 +425,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1C5FAB811D9510D30043E35A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1C5FAB8A1D9510D30043E35A /* layoutDemoTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1C5FAB8C1D9510D30043E35A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1C5FAB951D9510D30043E35A /* layoutDemoUITests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		1C5FAB871D9510D30043E35A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1C5FAB6B1D9510D20043E35A /* layoutDemo */;
-			targetProxy = 1C5FAB861D9510D30043E35A /* PBXContainerItemProxy */;
-		};
-		1C5FAB921D9510D30043E35A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1C5FAB6B1D9510D20043E35A /* layoutDemo */;
-			targetProxy = 1C5FAB911D9510D30043E35A /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1C5FAB781D9510D30043E35A /* Main.storyboard */ = {
@@ -695,56 +565,6 @@
 			};
 			name = Release;
 		};
-		1C5FAB9D1D9510D30043E35A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = PNQSRNMX9W;
-				INFOPLIST_FILE = layoutDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "----.layoutDemoTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/layoutDemo.app/layoutDemo";
-			};
-			name = Debug;
-		};
-		1C5FAB9E1D9510D30043E35A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = PNQSRNMX9W;
-				INFOPLIST_FILE = layoutDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "----.layoutDemoTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/layoutDemo.app/layoutDemo";
-			};
-			name = Release;
-		};
-		1C5FABA01D9510D30043E35A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = PNQSRNMX9W;
-				INFOPLIST_FILE = layoutDemoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "----.layoutDemoUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = layoutDemo;
-			};
-			name = Debug;
-		};
-		1C5FABA11D9510D30043E35A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = PNQSRNMX9W;
-				INFOPLIST_FILE = layoutDemoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "----.layoutDemoUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = layoutDemo;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -762,24 +582,6 @@
 			buildConfigurations = (
 				1C5FAB9A1D9510D30043E35A /* Debug */,
 				1C5FAB9B1D9510D30043E35A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		1C5FAB9C1D9510D30043E35A /* Build configuration list for PBXNativeTarget "layoutDemoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1C5FAB9D1D9510D30043E35A /* Debug */,
-				1C5FAB9E1D9510D30043E35A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		1C5FAB9F1D9510D30043E35A /* Build configuration list for PBXNativeTarget "layoutDemoUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1C5FABA01D9510D30043E35A /* Debug */,
-				1C5FABA11D9510D30043E35A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
