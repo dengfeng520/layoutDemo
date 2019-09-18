@@ -16,7 +16,7 @@ static NSString * const HeaderViewBtnCellID = @"HeaderViewBtnCellID";
  */
 @protocol HeaderViewDelegate <NSObject>
 
--(void)ClickHeaderBtn :(int)CellID;
+-(void)clickHeaderBtn:(int)cellID;
 
 @end
 
@@ -37,5 +37,5 @@ static NSString * const HeaderViewBtnCellID = @"HeaderViewBtnCellID";
 
 -(instancetype)initWithHeaderView:(CGPoint)origin andHeight:(CGFloat)height;
 
-@property (nonatomic, weak)id<HeaderViewDelegate>ClickHeaderBtnDelegate;
+@property (nonatomic, weak) id <HeaderViewDelegate> clickHeaderBtnDelegate;
 @end

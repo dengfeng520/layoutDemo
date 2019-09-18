@@ -15,7 +15,7 @@
  */
 @protocol UIDragButtonDelegate <NSObject>
 
--(void)ClickChangBtn :(UIButton *)Btn;
+-(void)clickChangBtn:(UIButton *)Btn;
 
 @end
 

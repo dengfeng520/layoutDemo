@@ -6,7 +6,7 @@ pod 'SDWebImage'
 pod 'MJRefresh'
 pod 'MBProgressHUD'
 pod 'MJExtension'
-pod 'AFNetworking', '~> 3.0'
+pod 'AFNetworking'
 pod 'IQKeyboardManager'
 pod ‘Masonry’
 end

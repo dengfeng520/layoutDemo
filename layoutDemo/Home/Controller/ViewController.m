@@ -7,64 +7,7 @@
 //
 
 #import "ViewController.h"
-
-#import "HomeCollectionViewCell.h"
-#import "FristCollectionViewCell.h"
-#import "UIDragButton.h"
-#import "PayViewController.h"
-#import "HeaderView.h"
-
-#import "Header.h"
-#import "ISInternet.h"
-#import "Model.h"
-
-#import "UIImageView+WebCache.h"
-#import "MJRefresh.h"
-#import "MJExtension.h"
-#import "Masonry.h"
-#import "MBProgressHUD.h"
-#import "Best64.h"
-
-#import "XHTestViewController.h"
-//#import "YNBaseViewController.h"
-
-static NSString * const HomeFristCellID = @"HomeTabCellID";
-
-static NSString * const HomeCollCellID = @"HomeCollCellID";
-
-
-@interface ViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,HeaderViewDelegate,UIDragButtonDelegate>
-
-
-/**
- *  悬浮的window
- */
-@property(strong,nonatomic)UIWindow *window;
-/*
- *  首页数据源数组
- */
-@property (strong, nonatomic) NSMutableArray *HomeDataList;
-/*
- *  首页的九宫格视图
- */
-@property (strong, nonatomic) UICollectionView *collectionView;
-/*
- * 点击切换九宫格或列表，默认为YES
- */
-@property (assign, nonatomic) BOOL ISChange;
-/**
- *  悬浮的按钮
- */
-@property (strong, nonatomic)  UIDragButton *ChangBtn;
-/**
- *  九宫格分页显示相关，默认为1
- */
-@property (assign, nonatomic) int CollPageNum;
-/**
- *  九宫格分页显示相关默认为当前屏幕最多显示的条数
- */
-@property (assign, nonatomic) int CollNumber;
-@end
+#import "ViewController+Extension.h"
 
 @implementation ViewController
 
@@ -83,42 +26,34 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
     //------------------------
-    [self NewCollView];
-    
+    [self configCollView];
     
     //------------------------
     //判断设备是否联网
-    if([ISInternet isConnectionAvailable] == YES)
-    {
+    if ([ISInternet isConnectionAvailable] == YES) {
         //从服务器获取到数据后updata
         [self GetServerADData];
-    }else
-    {
+    } else {
         printf("\n---------没有联网给用户提示---------\n");
     }
-    
     
     NSArray *LsList = @[@"1",@"2",@"2",@"3",@"3",@"4",@"5",@"7",@"8",@"8"];
     NSSet *LsSet = [NSSet setWithArray:LsList];
     NSLog(@"=====================%@",LsSet);
-  
     
     
     //------------------------
     //下拉刷新
+    __weak typeof (self) weakSelf = self;
     self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
-        [self.collectionView.mj_header endRefreshing];
-        if(self.HomeDataList.count == 0)
-        {
-            
-            [self GetServerADData];
-        
-        }else
-        {
-            self.CollPageNum = 1;
-            self.CollNumber = self.view.frame.size.height / 90;
-            [self.collectionView reloadData];
+        [weakSelf.collectionView.mj_header endRefreshing];
+        if (weakSelf.HomeDataList.count == 0) {
+            [weakSelf GetServerADData];
+        } else {
+            weakSelf.CollPageNum = 1;
+            weakSelf.CollNumber = weakSelf.view.frame.size.height / 90;
+            [weakSelf.collectionView reloadData];
         }
     }];
     
@@ -126,16 +61,14 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
     //上拉加载更多
        self.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^(void){
         
-        
         // Hide the time
-        [self.collectionView.mj_footer endRefreshing];
-        ++self.CollPageNum;
-        self.CollNumber = self.CollPageNum * 4;
-        [self.collectionView reloadData];
-        if(self.CollNumber >= self.HomeDataList.count)
-        {
+        [weakSelf.collectionView.mj_footer endRefreshing];
+        ++weakSelf.CollPageNum;
+        weakSelf.CollNumber = self.CollPageNum * 4;
+        [weakSelf.collectionView reloadData];
+        if (weakSelf.CollNumber >= self.HomeDataList.count) {
             printf("\n--------暂无更多数据---------\n");
-            --self.CollPageNum;
+            --weakSelf.CollPageNum;
         }
 
     }];
@@ -146,27 +79,17 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
     // 将视图尺寸设置为0，防止阻碍其他视图元素的交互
     self.view.frame = CGRectZero;
     // 延时显示悬浮窗口
-    [self performSelector:@selector(InitChangeBtnView) withObject:nil afterDelay:1];
+    [self performSelector:@selector(configChangeBtnView) withObject:nil afterDelay:1];
     
     
     //------------------------
     HeaderView *HomeHeaderView = [[HeaderView alloc]initWithHeaderView:CGPointMake(0, 64) andHeight:45];
     HomeHeaderView.BtnList = @[@"默认",@"热门",@"推荐",@"新品",@"价格"];
-    HomeHeaderView.ClickHeaderBtnDelegate = self;
+    HomeHeaderView.clickHeaderBtnDelegate = self;
     [self.view addSubview:HomeHeaderView];
-    
-    
-//    NSString *RetStr = [NSString stringWithFormat:@"username=%@&password=%@",[Best64 setencryptionBybest64String:@"123456"],[Best64 setencryptionBybest64String:@"123456"]];
-//    [self get_Living_room:RetStr secuessBlock:^(NSDictionary *secuess) {
-//        NSLog(@"================%@",secuess);
-//    }];
-    
-
-
 }
 
--(void)get_Living_room :(NSString *)retData secuessBlock:(void(^)(NSDictionary *secuess))getData
-{
+- (void)fetchLivingRoom:(NSString *)retData secuessBlock:(void(^)(NSDictionary *secuess))getData {
     NSString *post = [NSString stringWithFormat:@"%@",retData];
     NSData *postdata = [post dataUsingEncoding:NSUTF8StringEncoding];
     NSURL *url = [NSURL URLWithString:@"http://101.201.233.205/sdk/login.php"];
@@ -181,13 +104,11 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
                                       ^(NSData *data, NSURLResponse *response, NSError *error) {
                                           //在主线程中更新UI
                                           dispatch_async(dispatch_get_main_queue(), ^{
-                                              if(data != nil)
-                                              {
+                                              if(data != nil) {
                                                   NSDictionary *res = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 //                                                  NSLog(@"服务器返回的数据===%@",res);
                                                   
-                                              }else
-                                              {
+                                              } else {
                                                   //如果获取失败
                                                   NSLog(@"请求失败=======%@",error);
                                               }
@@ -200,8 +121,7 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
     
 }
 
--(void)NewCollView
-{
+- (void)configCollView {
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
     self.collectionView  = [[UICollectionView alloc]initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
     
@@ -216,17 +136,17 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
     self.collectionView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     [self.view addSubview:self.collectionView];
     
-    
+    __weak typeof (self) weakSelf = self;
     
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         //使左边等于self.view的左边，间距为0
-        make.left.equalTo(self.view.mas_left).offset(0);
+        make.left.equalTo(weakSelf.view.mas_left).offset(0);
         //使顶部与self.view的间距为45
-        make.top.equalTo(self.view.mas_top).offset(45);
+        make.top.equalTo(weakSelf.view.mas_top).offset(45);
         //设置宽度
-        make.width.equalTo(self.view.mas_width).multipliedBy(1);
+        make.width.equalTo(weakSelf.view.mas_width).multipliedBy(1);
         //设置高度
-        make.height.equalTo(self.view.mas_height).multipliedBy(1);
+        make.height.equalTo(weakSelf.view.mas_height).multipliedBy(1);
         
     }];
 }
@@ -237,29 +157,27 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
     // Dispose of any resources that can be recreated.
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated  {
     [super viewWillAppear:animated];
     
     [self.ChangBtn setHidden:NO];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animated {
     [self.ChangBtn setHidden:YES];
 }
 
-- (void)viewDidAppear:(BOOL)animated{
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] init];
     self.navigationItem.backBarButtonItem.title = @"";
 }
 
-- (void)viewDidDisappear:(BOOL)animated{
+- (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
 }
 
-- (void)viewWillLayoutSubviews{
+- (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
 }
 
@@ -267,9 +185,7 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
 /*
  *  初始化切换按钮
  */
--(void)InitChangeBtnView
-{
-   
+- (void)configChangeBtnView {
     // 悬浮按钮
     self.ChangBtn = [UIDragButton buttonWithType:UIButtonTypeCustom];
     [self.ChangBtn setBackgroundImage:[UIImage imageNamed:@"goods_two"] forState:UIControlStateNormal];
@@ -277,7 +193,7 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
     self.ChangBtn.imageView.contentMode = UIViewContentModeScaleToFill;
     self.ChangBtn.frame = CGRectMake(0, 0, 40, 40);
     // 按钮点击事件
-    [self.ChangBtn addTarget:self action:@selector(ClickChangBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.ChangBtn addTarget:self action:@selector(clickChangBtn:) forControlEvents:UIControlEventTouchUpInside];
     // 初始选中状态
     self.ChangBtn.selected = NO;
     // 禁止高亮
@@ -287,8 +203,8 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
     self.ChangBtn.imageView.alpha = 0.8;
     
     // 悬浮窗
-    _window = [[UIWindow alloc]initWithFrame:CGRectMake(DEF_SCREEN_WIDTH - 50, 115, 40, 40)];
-    _window.windowLevel = UIWindowLevelAlert+1;
+    _window = [[UIWindow alloc] initWithFrame:CGRectMake(DEF_SCREEN_WIDTH - 50, 115, 40, 40)];
+    _window.windowLevel = UIWindowLevelAlert + 1;
     _window.backgroundColor = [UIColor clearColor];
     _window.layer.cornerRadius = 5;
     _window.layer.masksToBounds = YES;
@@ -296,8 +212,6 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
     [_window addSubview:self.ChangBtn];
     //显示window
     [_window makeKeyAndVisible];
-
-    
 }
 
 
@@ -305,19 +219,16 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
 /*
  *  点击切换九宫格或列表
  */
--(void)ClickChangBtn :(UIButton *)Btn
-{
+- (void)clickChangBtn:(UIButton *)Btn {
     self.ISChange = !self.ISChange;
     // 设置翻转方向
     UIViewAnimationOptions option;
-    if(self.ISChange == YES)
-    {
+    if (self.ISChange == YES) {
         [self.ChangBtn setBackgroundImage:[UIImage imageNamed:@"goods_two"] forState:UIControlStateNormal];
         
        option =  UIViewAnimationOptionTransitionFlipFromLeft;
        
-    }else
-    {
+    } else {
         [self.ChangBtn setBackgroundImage:[UIImage imageNamed:@"goods_one"] forState:UIControlStateNormal];
         
         option =  UIViewAnimationOptionTransitionFlipFromRight;
@@ -339,9 +250,8 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
     [self.collectionView reloadData];
 }
 
--(void)ClickHeaderBtn :(int)CellID
-{
-    printf("\n===============%d\n",CellID);
+- (void)clickHeaderBtn:(int)cellID {
+    printf("\n===============%d\n",cellID);
 }
 
 
@@ -349,8 +259,7 @@ static NSString * const HomeCollCellID = @"HomeCollCellID";
 
 
 #pragma mark - 公开接口
--(void)GetServerADData
-{
+- (void)GetServerADData {
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     NSURL *url = [NSURL URLWithString:APPLE_SERVER];
     //POST请求，设置30S超时

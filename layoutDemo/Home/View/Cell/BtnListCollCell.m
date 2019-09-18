@@ -11,12 +11,8 @@
 @implementation BtnListCollCell
 
 
--(id)initWithFrame:(CGRect)frame
-{
-    if ((self = [super initWithFrame:frame]))
-    {
-        
-        
+- (id)initWithFrame:(CGRect)frame {
+    if ((self = [super initWithFrame:frame])) {
         //-------------------------
         //标题
         self.TitleLab = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
@@ -24,17 +20,13 @@
         self.TitleLab.textColor = [UIColor grayColor];
         self.TitleLab.textAlignment = NSTextAlignmentCenter;
         [self addSubview:self.TitleLab];
-        
     }
-    
-    
     
     return self;
     
 }
 
--(void)CollreloadDataWithBtn:(NSString *)BtnTitile
-{
+- (void)CollreloadDataWithBtn:(NSString *)BtnTitile {
     self.TitleLab.text = BtnTitile;
 }
 

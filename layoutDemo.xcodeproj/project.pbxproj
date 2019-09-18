@@ -108,6 +108,7 @@
 		1CF6D0171E717151004D70D4 /* XHTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHTestViewController.h; sourceTree = "<group>"; };
 		1CF6D0181E717151004D70D4 /* XHTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHTestViewController.m; sourceTree = "<group>"; };
 		1CF6D0191E717151004D70D4 /* XHTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHTestViewController.xib; sourceTree = "<group>"; };
+		1D8456C32331CF5100C841F5 /* ViewController+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ViewController+Extension.h"; sourceTree = "<group>"; };
 		220A3033BBF4E0C8FBACA0E9 /* Pods-layoutDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-layoutDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-layoutDemo/Pods-layoutDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		50E275212EFFEC15A542C646 /* libPods-layoutDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-layoutDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -151,58 +152,51 @@
 			path = NetworkError;
 			sourceTree = "<group>";
 		};
-		1C39CB251D98C08D0058750B /* 首页Home */ = {
+		1C39CB251D98C08D0058750B /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				1C39CB261D98C08D0058750B /* 首页Controller */,
-				1C39CB2B1D98C08D0058750B /* 首页Modle */,
-				1C39CB2E1D98C08D0058750B /* 首页View */,
+				1C39CB261D98C08D0058750B /* Controller */,
+				1C39CB2B1D98C08D0058750B /* Modle */,
+				1C39CB2E1D98C08D0058750B /* View */,
 			);
-			path = "首页Home";
+			path = Home;
 			sourceTree = "<group>";
 		};
-		1C39CB261D98C08D0058750B /* 首页Controller */ = {
+		1C39CB261D98C08D0058750B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				1CF6D0141E717151004D70D4 /* XHTestCell.h */,
-				1CF6D0151E717151004D70D4 /* XHTestCell.m */,
-				1CF6D0161E717151004D70D4 /* XHTestCell.xib */,
 				1CF6D0171E717151004D70D4 /* XHTestViewController.h */,
 				1CF6D0181E717151004D70D4 /* XHTestViewController.m */,
 				1CF6D0191E717151004D70D4 /* XHTestViewController.xib */,
 				1C39CB291D98C08D0058750B /* ViewController.h */,
+				1D8456C32331CF5100C841F5 /* ViewController+Extension.h */,
 				1C39CB2A1D98C08D0058750B /* ViewController.m */,
 				1C39CB3F1D98F9770058750B /* PayViewController.h */,
 				1C39CB401D98F9770058750B /* PayViewController.m */,
 				1C39CB411D98F9770058750B /* PayViewController.xib */,
 			);
-			path = "首页Controller";
+			path = Controller;
 			sourceTree = "<group>";
 		};
-		1C39CB2B1D98C08D0058750B /* 首页Modle */ = {
+		1C39CB2B1D98C08D0058750B /* Modle */ = {
 			isa = PBXGroup;
 			children = (
 				1C39CB2C1D98C08D0058750B /* Model.h */,
 				1C39CB2D1D98C08D0058750B /* Model.m */,
 			);
-			path = "首页Modle";
+			path = Modle;
 			sourceTree = "<group>";
 		};
-		1C39CB2E1D98C08D0058750B /* 首页View */ = {
+		1C39CB2E1D98C08D0058750B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1C39CB2F1D98C08D0058750B /* FristCollectionViewCell.h */,
-				1C39CB301D98C08D0058750B /* FristCollectionViewCell.m */,
-				1C39CB311D98C08D0058750B /* HomeCollectionViewCell.h */,
-				1C39CB321D98C08D0058750B /* HomeCollectionViewCell.m */,
+				1D8456C22331CE2C00C841F5 /* Cell */,
 				1C39CB351D98C08D0058750B /* UIDragButton.h */,
 				1C39CB361D98C08D0058750B /* UIDragButton.m */,
 				1C91E3F11D9B9BD7000DD60C /* HeaderView.h */,
 				1C91E3F21D9B9BD7000DD60C /* HeaderView.m */,
-				1C91E3F41D9BA564000DD60C /* BtnListCollCell.h */,
-				1C91E3F51D9BA564000DD60C /* BtnListCollCell.m */,
 			);
-			path = "首页View";
+			path = View;
 			sourceTree = "<group>";
 		};
 		1C5FAB631D9510D20043E35A = {
@@ -230,7 +224,7 @@
 		1C5FAB6E1D9510D30043E35A /* layoutDemo */ = {
 			isa = PBXGroup;
 			children = (
-				1C39CB251D98C08D0058750B /* 首页Home */,
+				1C39CB251D98C08D0058750B /* Home */,
 				1C5FABA51D95167B0043E35A /* Public */,
 				1C5FAB721D9510D30043E35A /* AppDelegate.h */,
 				1C5FAB731D9510D30043E35A /* AppDelegate.m */,
@@ -284,6 +278,22 @@
 				1C5FABAA1D95167B0043E35A /* Reachability.m */,
 			);
 			path = Public;
+			sourceTree = "<group>";
+		};
+		1D8456C22331CE2C00C841F5 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1C39CB2F1D98C08D0058750B /* FristCollectionViewCell.h */,
+				1C39CB301D98C08D0058750B /* FristCollectionViewCell.m */,
+				1C39CB311D98C08D0058750B /* HomeCollectionViewCell.h */,
+				1C39CB321D98C08D0058750B /* HomeCollectionViewCell.m */,
+				1C91E3F41D9BA564000DD60C /* BtnListCollCell.h */,
+				1C91E3F51D9BA564000DD60C /* BtnListCollCell.m */,
+				1CF6D0141E717151004D70D4 /* XHTestCell.h */,
+				1CF6D0151E717151004D70D4 /* XHTestCell.m */,
+				1CF6D0161E717151004D70D4 /* XHTestCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		65A555B038A310B66380CFAC /* Frameworks */ = {
@@ -395,6 +405,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);

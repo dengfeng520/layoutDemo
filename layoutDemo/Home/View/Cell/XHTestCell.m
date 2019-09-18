@@ -33,26 +33,15 @@
     self.ui_noteLabel.numberOfLines = 0;
 }
 
-//- (void)layoutSubviews
-//{
-//    [super layoutSubviews];
-//    [self setNoteLayout];
-//}
-
-- (CGFloat)setNoteLayout
-{
+- (CGFloat)setNoteLayout {
     CGSize size = [self.ui_noteLabel sizeThatFits:CGSizeMake(self.ui_noteLabel.frame.size.width,MAXFLOAT)];
     CGRect frame = [self frame];
     frame.size.height = size.height;
     self.frame = frame;
-//    NSLog(@"高度:%.f",frame.size.height);
-     NSLog(@"宽度===============%.f",self.ui_noteLabel.frame.size.width);
-//    [self noteFrameWithHeight:frame.size.height];
     return frame.size.height;
 }
 
-- (void)noteFrameWithHeight:(CGFloat)height
-{
+- (void)noteFrameWithHeight:(CGFloat)height {
     [_delegate testCellWithNoteHeight:height];
 }
 

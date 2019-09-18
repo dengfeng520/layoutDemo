@@ -31,8 +31,7 @@ typedef enum {
 /**
  *  手指按住移动过程,通过悬浮按钮的拖动事件来拖动整个悬浮窗口
  */
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     // 获得触摸在根视图中的坐标
     UITouch *touch = [touches anyObject];
     CGPoint curPoint = [touch locationInView:_rootView];
@@ -51,7 +50,7 @@ typedef enum {
     curPoint = [self ConvertDir:curPoint];
     // 通知代理,如果结束触点和起始触点极近则认为是点击事件
     if (pow((_startPos.x - curPoint.x),2) + pow((_startPos.y - curPoint.y),2) < 1) {
-        [self.btnDelegate ClickChangBtn:self];
+        [self.btnDelegate clickChangBtn:self];
         // 点击后不吸附
         return;
     }
@@ -86,29 +85,25 @@ typedef enum {
     
     // 开始吸附
     switch (minDir) {
-        case LEFT:
-        {
+        case LEFT: {
             [UIView animateWithDuration:0.3 animations:^{
                 self.superview.center = CGPointMake(self.superview.frame.size.width / 2 + 10, self.superview.center.y);
             }];
             break;
         }
-        case RIGHT:
-        {
+        case RIGHT: {
             [UIView animateWithDuration:0.3 animations:^{
                 self.superview.center = CGPointMake(W - self.superview.frame.size.width / 2 - 10, self.superview.center.y);
             }];
             break;
         }
-        case TOP:
-        {
+        case TOP: {
             [UIView animateWithDuration:0.3 animations:^{
                 self.superview.center = CGPointMake(self.superview.center.x, self.superview.frame.size.height / 2 + 74);
             }];
             break;
         }
-        case BOTTOM:
-        {
+        case BOTTOM: {
             [UIView animateWithDuration:0.3 animations:^{
                 self.superview.center = CGPointMake(self.superview.center.x, H - self.superview.frame.size.height / 2 - 10);
             }];
