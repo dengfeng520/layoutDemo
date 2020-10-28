@@ -33,11 +33,9 @@ static NSString * const PayViewCellID = @"PayViewCellID";
     [self.view addSubview:self.AnminView];
     __weak typeof (self) weakSelf = self;
     [self.AnminView mas_makeConstraints:^(MASConstraintMaker *make) {
-        
         make.top.equalTo(self.view.mas_top).offset(70.f);
         make.centerX.equalTo(weakSelf.view);
         make.size.mas_equalTo(CGSizeMake(80, 80));
-
     }];
     self.AnminView.backgroundColor = [UIColor redColor];
     
@@ -75,8 +73,6 @@ static NSString * const PayViewCellID = @"PayViewCellID";
         //设置高度
         make.height.mas_equalTo(45);
         make.bottom.equalTo(weakSelf.view).with.offset(-40);
-        
-        
     }];
     AnminBtnTWo.backgroundColor = [UIColor redColor];
     AnminBtnTWo.layer.cornerRadius = 5.f;
@@ -178,8 +174,7 @@ static NSString * const PayViewCellID = @"PayViewCellID";
         case 103: {
             CATransition *transition = [CATransition animation];
             transition.duration = 1.0f;
-//            transition.type = kCATransitionMoveIn;
-            transition.type = @"suckEffect";
+            transition.type = @"oglFlip";
             /*
              *淡化、推挤、揭开、覆盖
              NSString * const kCATransitionFade;
@@ -203,7 +198,7 @@ static NSString * const PayViewCellID = @"PayViewCellID";
              animation.type = @"cameraIrisHollowClose ";
              */
             transition.subtype = kCATransitionFromRight;
-            [self.view exchangeSubviewAtIndex:1 withSubviewAtIndex:0];
+//            [self.view exchangeSubviewAtIndex:1 withSubviewAtIndex:0];
             [self.view.layer addAnimation:transition forKey:@"animation"];
         }
             break;

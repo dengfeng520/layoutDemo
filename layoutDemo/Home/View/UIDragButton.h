@@ -20,7 +20,7 @@
 @interface UIDragButton : UIButton
 
 // 悬浮窗所依赖的根视图
-@property (nonatomic, strong) UIWindow *rootView;
+@property (nonatomic, strong) UIView *rootView;
 // 开始按下的触点坐标
 @property (nonatomic, assign) CGPoint startPos;
 // UIDragButton的点击事件代理

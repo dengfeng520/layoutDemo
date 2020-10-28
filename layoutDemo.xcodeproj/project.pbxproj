@@ -32,6 +32,8 @@
 		1CF6D01B1E717151004D70D4 /* XHTestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CF6D0161E717151004D70D4 /* XHTestCell.xib */; };
 		1CF6D01C1E717151004D70D4 /* XHTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF6D0181E717151004D70D4 /* XHTestViewController.m */; };
 		1CF6D01D1E717151004D70D4 /* XHTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CF6D0191E717151004D70D4 /* XHTestViewController.xib */; };
+		1D66E2C5254902B500365B7D /* HomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D66E2C4254902B500365B7D /* HomeViewModel.m */; };
+		1D66E2CA2549096A00365B7D /* ViewController+ConfigUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D66E2C92549096A00365B7D /* ViewController+ConfigUI.m */; };
 		68B1AD8322E1C8FC639A0F37 /* libPods-layoutDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E275212EFFEC15A542C646 /* libPods-layoutDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +89,10 @@
 		1CF6D0171E717151004D70D4 /* XHTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHTestViewController.h; sourceTree = "<group>"; };
 		1CF6D0181E717151004D70D4 /* XHTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHTestViewController.m; sourceTree = "<group>"; };
 		1CF6D0191E717151004D70D4 /* XHTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHTestViewController.xib; sourceTree = "<group>"; };
+		1D66E2C3254902B500365B7D /* HomeViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewModel.h; sourceTree = "<group>"; };
+		1D66E2C4254902B500365B7D /* HomeViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewModel.m; sourceTree = "<group>"; };
+		1D66E2C82549096A00365B7D /* ViewController+ConfigUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ViewController+ConfigUI.h"; sourceTree = "<group>"; };
+		1D66E2C92549096A00365B7D /* ViewController+ConfigUI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ViewController+ConfigUI.m"; sourceTree = "<group>"; };
 		1D8456C32331CF5100C841F5 /* ViewController+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ViewController+Extension.h"; sourceTree = "<group>"; };
 		220A3033BBF4E0C8FBACA0E9 /* Pods-layoutDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-layoutDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-layoutDemo/Pods-layoutDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		50E275212EFFEC15A542C646 /* libPods-layoutDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-layoutDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +126,7 @@
 		1C39CB251D98C08D0058750B /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				1D66E2C22549028F00365B7D /* ViewModel */,
 				1C39CB261D98C08D0058750B /* Controller */,
 				1C39CB2B1D98C08D0058750B /* Modle */,
 				1C39CB2E1D98C08D0058750B /* View */,
@@ -136,6 +143,8 @@
 				1C39CB291D98C08D0058750B /* ViewController.h */,
 				1D8456C32331CF5100C841F5 /* ViewController+Extension.h */,
 				1C39CB2A1D98C08D0058750B /* ViewController.m */,
+				1D66E2C82549096A00365B7D /* ViewController+ConfigUI.h */,
+				1D66E2C92549096A00365B7D /* ViewController+ConfigUI.m */,
 				1C39CB3F1D98F9770058750B /* PayViewController.h */,
 				1C39CB401D98F9770058750B /* PayViewController.m */,
 				1C39CB411D98F9770058750B /* PayViewController.xib */,
@@ -241,6 +250,15 @@
 				1C5FABAA1D95167B0043E35A /* Reachability.m */,
 			);
 			path = Public;
+			sourceTree = "<group>";
+		};
+		1D66E2C22549028F00365B7D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1D66E2C3254902B500365B7D /* HomeViewModel.h */,
+				1D66E2C4254902B500365B7D /* HomeViewModel.m */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		1D8456C22331CE2C00C841F5 /* Cell */ = {
@@ -406,6 +424,7 @@
 				1CF6D01C1E717151004D70D4 /* XHTestViewController.m in Sources */,
 				1C91E3F31D9B9BD7000DD60C /* HeaderView.m in Sources */,
 				1C1451391E835C6B003C5E30 /* CheckNetwork.m in Sources */,
+				1D66E2C5254902B500365B7D /* HomeViewModel.m in Sources */,
 				1C39CB391D98C08D0058750B /* ViewController.m in Sources */,
 				1C5FABAB1D95167B0043E35A /* ISInternet.m in Sources */,
 				1C14513B1E835C6B003C5E30 /* NetworkError.m in Sources */,
@@ -415,6 +434,7 @@
 				1C19D7E01DAE2471001E927A /* Best64.m in Sources */,
 				1C14513A1E835C6B003C5E30 /* HttpManager.m in Sources */,
 				1C39CB3A1D98C08D0058750B /* Model.m in Sources */,
+				1D66E2CA2549096A00365B7D /* ViewController+ConfigUI.m in Sources */,
 				1C5FAB741D9510D30043E35A /* AppDelegate.m in Sources */,
 				1C39CB421D98F9770058750B /* PayViewController.m in Sources */,
 				1C5FAB711D9510D30043E35A /* main.m in Sources */,

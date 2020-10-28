@@ -25,7 +25,7 @@
 #import "Best64.h"
 
 #import "XHTestViewController.h"
-
+#import "HomeViewModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -38,7 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 /*
  *  首页数据源数组
  */
-@property (strong, nonatomic) NSMutableArray *HomeDataList;
+@property (strong, nonatomic) NSMutableArray <Model *> *homeDataList;
 /*
  *  首页的九宫格视图
  */
@@ -46,20 +46,20 @@ NS_ASSUME_NONNULL_BEGIN
 /*
  * 点击切换九宫格或列表，默认为YES
  */
-@property (assign, nonatomic) BOOL ISChange;
+@property (assign, nonatomic) BOOL isChange;
 /**
  *  悬浮的按钮
  */
-@property (strong, nonatomic)  UIDragButton *ChangBtn;
+@property (strong, nonatomic)  UIDragButton *changBtn;
 /**
  *  九宫格分页显示相关，默认为1
  */
-@property (assign, nonatomic) int CollPageNum;
+@property (assign, nonatomic) int pageIndex;
 /**
  *  九宫格分页显示相关默认为当前屏幕最多显示的条数
  */
-@property (assign, nonatomic) int CollNumber;
-
+@property (assign, nonatomic) int pageSize;
+@property (strong, nonatomic) HeaderView *homeHeaderView;
 @end
 
 NS_ASSUME_NONNULL_END

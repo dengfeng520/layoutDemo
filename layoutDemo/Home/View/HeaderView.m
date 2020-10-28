@@ -10,40 +10,25 @@
 
 @implementation HeaderView
 
-
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-       
-    
+        self.backgroundColor = [UIColor groupTableViewBackgroundColor];
+
+        UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+        self.headerBtnListView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
+        self.headerBtnListView.scrollEnabled = NO;
+        
+        self.headerBtnListView.backgroundColor = [UIColor clearColor];
+        [self.headerBtnListView  registerClass:[BtnListCollCell class] forCellWithReuseIdentifier:HeaderViewBtnCellID];
+        [self addSubview:self.headerBtnListView];
+        
+        
+        self.headerBtnListView.delegate = self;
+        self.headerBtnListView.dataSource = self;
     }
     return self;
 }
-
-- (instancetype)initWithHeaderView:(CGPoint)origin andHeight:(CGFloat)height {
-    CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    self = [self initWithFrame:CGRectMake(origin.x, origin.y, screenSize.width, height)];
-
-    
-    self.backgroundColor = [UIColor groupTableViewBackgroundColor];
-
-    
-    UICollectionViewFlowLayout *flowLayout =[[UICollectionViewFlowLayout alloc]init];
-    self.HeaderBtnListView  = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, height) collectionViewLayout:flowLayout];
-    self.HeaderBtnListView.scrollEnabled = NO;
-    
-    self.HeaderBtnListView.backgroundColor = [UIColor clearColor];
-    [self.HeaderBtnListView  registerClass:[BtnListCollCell class] forCellWithReuseIdentifier:HeaderViewBtnCellID];
-    
-    [self addSubview:self.HeaderBtnListView];
-    
-    
-    self.HeaderBtnListView.delegate = self;
-    self.HeaderBtnListView.dataSource = self;
-    
-    return self;
-}
-
 
 //定义展示的UICollectionViewCell的个数
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -59,12 +44,9 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     BtnListCollCell *collcell = (BtnListCollCell *)[collectionView dequeueReusableCellWithReuseIdentifier:HeaderViewBtnCellID forIndexPath:indexPath];
     if (!collcell) {
-        
         collcell = [[BtnListCollCell alloc] init];
-        
     }
     collcell.backgroundColor = [UIColor whiteColor];
-    
     
     [collcell CollreloadDataWithBtn:[self.BtnList objectAtIndex:indexPath.row]];
     

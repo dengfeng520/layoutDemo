@@ -7,17 +7,13 @@
 //
 
 #import "HomeCollectionViewCell.h"
-
 #import "UIImageView+WebCache.h"
 
 @implementation HomeCollectionViewCell
 
--(id)initWithFrame:(CGRect)frame 
-{
+- (id)initWithFrame:(CGRect)frame  {
     if ((self = [super initWithFrame:frame])) {
-
-        
-            self.GoodsImg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 10, self.frame.size.width - 20, self.frame.size.width - 20)];
+        self.GoodsImg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 10, self.frame.size.width - 20, self.frame.size.width - 20)];
             [self addSubview:self.GoodsImg];
             
             //-------------------------
@@ -35,24 +31,18 @@
             self.InfoLab.numberOfLines = 0;
             [self addSubview:self.InfoLab];
         }
-        
-       
-
           return self;
 
 }
 
--(void)CollreloadDataWith:(Model *)model
-{
+- (void)CollreloadDataWith:(Model *)model {
     //-------------------------
     //设置图片
     [self.GoodsImg sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",model.artworkUrl60]] placeholderImage:[UIImage imageNamed:@"chat_placeholder_image"]];
     
     self.TitleLab.text = [NSString stringWithFormat:@"%@",model.trackName];
     
-    
     self.InfoLab.text = [NSString stringWithFormat:@"%@",model.Description];
-    
 }
 
 @end

@@ -28,14 +28,8 @@ static NSString * const HeaderViewBtnCellID = @"HeaderViewBtnCellID";
 @property(strong, nonatomic) NSArray *BtnList;
 
 
-@property (strong, nonatomic) UICollectionView *HeaderBtnListView;
+@property (strong, nonatomic) UICollectionView *headerBtnListView;
 
-/*
- *  初始化
- */
--(instancetype)initWithFrame:(CGRect)frame;
-
--(instancetype)initWithHeaderView:(CGPoint)origin andHeight:(CGFloat)height;
 
 @property (nonatomic, weak) id <HeaderViewDelegate> clickHeaderBtnDelegate;
 @end
